@@ -2,7 +2,7 @@
 %global gem_name sensu-transport
 
 Name:           rubygem-%{gem_name}
-Version:        5.0.0
+Version:        7.0.2
 Release:        1%{?dist}
 Summary:        The Sensu transport abstraction library
 Group:          Development/Languages
@@ -16,13 +16,13 @@ BuildRequires:  ruby
 BuildRequires:  rubygem(eventmachine)
 # BuildRequires: rubygem(rspec)
 
-Requires:       rubygem(amqp) == 1.5.0
-Requires:       rubygem(amq-protocol) == 1.9.2
+Requires:       rubygem(amqp) == 1.6.0
+Requires:       rubygem(amq-protocol) == 2.0.1
 Requires:       rubygem(sensu-redis) >= 1.0.0
 Requires:       rubygem(eventmachine)
 
 BuildArch:      noarch
-%if 0%{?fedora} <= 20 || 0%{?el7}
+%if 0%{?rhel}
 Provides:       rubygem(%{gem_name}) = %{version}
 %endif
 
@@ -76,15 +76,15 @@ popd
 %{gem_spec}
 %doc %{gem_instdir}/LICENSE.txt
 %doc %{gem_instdir}/README.md
-%doc %{gem_instdir}/Gemfile
 
 %files doc
 %doc %{gem_docdir}
-%{gem_instdir}/Rakefile
-%{gem_instdir}/spec
 %{gem_instdir}/%{gem_name}.gemspec
 
 %changelog
+* Fri Dec 23 2016 Martin Mágr <mmagr@redhat.com> - 7.0.2-1
+- Updated to latest upstream release
+
 * Mon May 09 2016 Martin Mágr <mmagr@redhat.com> - 5.0.0-1
 - Updated to upstream version 5.0.0
 
